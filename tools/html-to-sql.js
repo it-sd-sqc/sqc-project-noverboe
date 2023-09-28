@@ -86,19 +86,19 @@ const bookTitle = bookTitleElement.textContent;
 const sqlHeader = `\\encoding UTF8
 
 DROP TABLE IF EXISTS book;
-DROP TABLE IF EXISTS chapter;
+DROP TABLE IF EXISTS chapters;
 
 CREATE TABLE book (
   id SERIAL PRIMARY KEY,
   book_id INT NOT NULL,
-  book_name VARCHAR(200) NOT NULL
+  book_name TEXT NOT NULL
 );
 
 CREATE TABLE chapters (
   id SERIAL PRIMARY KEY,
   book_id INT NOT NULL,
   chapter_number INT NOT NULL,
-  chapter_title VARCHAR(200) NOT NULL,
+  chapter_title TEXT NOT NULL,
   word_count INT NOT NULL
 );
 
@@ -126,20 +126,28 @@ chapterIds.forEach((id, index) => {
 
 // Output the data as SQL.
 const fd = openSync(dstPath, 'w')
-writeFileSync(fd, sqlHeader)
 
-// Insert chapter data
-chapters.forEach((chapter, index) => {
-  const { chapter_number, chapter_title, word_count} = chapter;
-  const value = `(${bookId}, '${chapter_number}', '${chapter_title}', '${word_count}'`;
-  if (index === 0) {
-    writeFileSync(fd, `(${value}`);
-  } else {
-    writeFileSync(fd, `,\n${value}`);
-  }
-});
+try {
+  writeFileSync(fd, sqlHeader)
 
+  // Insert chapter data
+  chapters.forEach((chapter, index) => {
+    const { chapter_number, chapter_title, word_count} = chapter;
+    const escapedTitle = chapter_title.replace(/'/g, "''");
+    const value = `(${bookId}, ${chapter_number}, '${escapedTitle}', ${word_count})`;
+    if (index === 0) {
+      writeFileSync(fd, `${value}`);
+    } else {
+      writeFileSync(fd, `,\n${value}`);
+    }
+  });
+  
+  
+  writeFileSync(fd, ';\n\n')
+  console.log("success");
+} catch (msg) {
+  console.log("caught error: " + msg);
+}
 
-writeFileSync(fd, ';\n\n')
 
 closeSync(fd)
