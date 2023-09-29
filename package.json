@@ -9,7 +9,7 @@
   },
   "scripts": {
     "generate": "node tools/html-to-sql.js && psql -U postgres -f ./docs/generated-schema.sql",
-    "test": "standard \"**/*.js\" && stylelint \"**/*.css\" && html-validate \"public/**/*.html\"",
+    "test": "jasmine && standard \"**/*.js\" && ejslint \"views/**/*.ejs\" && stylelint \"**/*.css\" && html-validator \"public/**/*.html\"",
     "start": "node server.js"
   },
   "repository": {
@@ -24,14 +24,18 @@
   },
   "homepage": "https://github.com/it-sd-sqc/sqc-project-noverboe#readme",
   "devDependencies": {
+    "ejs-lint": "^2.0.0",
     "html-validate": "^8.4.1",
     "standard": "^17.1.0",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "node-html-parser": "^6.1.10",
+    "pg": "^8.11.3",
     "svgoban": "^1.0.0"
   }
 }

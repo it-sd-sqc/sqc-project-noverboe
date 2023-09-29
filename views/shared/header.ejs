@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= locals?.title ? locals.title + ' • ' : '' %>A basic web server</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+  </head>
+<body>
+  <main>
+
+    <header>
+      <button type="button" onclick="toggleMode()">🌙</button>
+      <h1><a href="/">A Look at Go</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/guide">Guide</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
