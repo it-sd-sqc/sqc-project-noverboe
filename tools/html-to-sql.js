@@ -25,7 +25,7 @@ import pkg from 'svgoban'
 const { serialize } = pkg
 
 // Configuration ///////////////////////////////////////////
-const bookId = 1;
+const bookId = 1
 const srcPath = 'data/AlicesAdventuresInWonderlandLewisCarroll.htm'
 const dstPath = 'docs/generated-schema.sql'
 const chapterIds = [
@@ -53,35 +53,35 @@ const gobanConfig = {
 
 // Utility functions ///////////////////////////////////////
 const extractTitle = function (root, id) {
-  const chapterElement = root.querySelector(`div#${id}`);
-  console.log("chapterElement: " + chapterElement);
+  const chapterElement = root.querySelector(`div#${id}`)
+  console.log('chapterElement: ' + chapterElement)
 
   if (chapterElement) {
-    const title = chapterElement.querySelector('h2');
+    const title = chapterElement.querySelector('h2')
     if (title) {
-      return title.textContent;
+      return title.textContent
     } else {
-      console.error(`Title for chapter with id '${id}' not found.`);
-      return null;
+      console.error(`Title for chapter with id '${id}' not found.`)
+      return null
     }
   } else {
-    console.error(`Chapter with id '${id}' not found.`);
-    return null;
+    console.error(`Chapter with id '${id}' not found.`)
+    return null
   }
 }
 
 const calculateWordCount = (text) => {
-  const words = text.split(/\s+/);
-  return words.length;
-};
+  const words = text.split(/\s+/)
+  return words.length
+}
 
 // Conversion //////////////////////////////////////////////
 const src = readFileSync(srcPath, 'utf8')
 const domRoot = parse(src)
 
 // Extract the book title from the HTML
-const bookTitleElement = domRoot.querySelector('title');
-const bookTitle = bookTitleElement.textContent;
+const bookTitleElement = domRoot.querySelector('title')
+const bookTitle = bookTitleElement.textContent
 
 const sqlHeader = `\\encoding UTF8
 
@@ -111,18 +111,18 @@ const chapters = []
 
 chapterIds.forEach((id, index) => {
   // Extract the title and body
-  const titleElement = extractTitle(domRoot, id);
-  const chapterElement = domRoot.querySelector(`div#${id}`);
+  const titleElement = extractTitle(domRoot, id)
+  const chapterElement = domRoot.querySelector(`div#${id}`)
 
-  const chapterContent = chapterElement.text;
-  const wordCount = calculateWordCount(chapterContent);
+  const chapterContent = chapterElement.text
+  const wordCount = calculateWordCount(chapterContent)
 
   chapters.push({
     chapter_number: index + 1, // Chapter numbers start from 1
     chapter_title: titleElement,
     word_count: wordCount
-  });
-});
+  })
+})
 
 // Output the data as SQL.
 const fd = openSync(dstPath, 'w')
@@ -132,22 +132,20 @@ try {
 
   // Insert chapter data
   chapters.forEach((chapter, index) => {
-    const { chapter_number, chapter_title, word_count} = chapter;
-    const escapedTitle = chapter_title.replace(/'/g, "''");
-    const value = `(${bookId}, ${chapter_number}, '${escapedTitle}', ${word_count})`;
+    const { chapter_number, chapter_title, word_count } = chapter
+    const escapedTitle = chapter_title.replace(/'/g, "''")
+    const value = `(${bookId}, ${chapter_number}, '${escapedTitle}', ${word_count})`
     if (index === 0) {
-      writeFileSync(fd, `${value}`);
+      writeFileSync(fd, `${value}`)
     } else {
-      writeFileSync(fd, `,\n${value}`);
+      writeFileSync(fd, `,\n${value}`)
     }
-  });
-  
-  
-  writeFileSync(fd, ';\n\n')
-  console.log("success");
-} catch (msg) {
-  console.log("caught error: " + msg);
-}
+  })
 
+  writeFileSync(fd, ';\n\n')
+  console.log('success')
+} catch (msg) {
+  console.log('caught error: ' + msg)
+}
 
 closeSync(fd)
