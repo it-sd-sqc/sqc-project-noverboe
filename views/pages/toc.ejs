@@ -4,7 +4,6 @@
   <ul>
     <% chapters.forEach((chapter) => { %>
       <li>
-        <span>Book ID: <%= chapter.book_id %></span><br>
         <span>Chapter Number: <%= chapter.chapter_number %></span><br>
         <span>Chapter Title: <%= chapter.chapter_title %></span><br>
         <a href="/guide/<%= chapter.chapter_number %>">Read Chapter</a>

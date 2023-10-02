@@ -19,7 +19,7 @@ export const query = async function (sql, params) {
   let results = []
   try {
     client = await pool.connect()
-    const response = client.query(sql, params)
+    const response = await client.query(sql, params)
     if (response && response.rows) {
       results = response.rows
     }
@@ -30,11 +30,13 @@ export const query = async function (sql, params) {
   return results
 }
 
-export const queryChapter = async function (id) {
-  const sql = `SELECT *, (SELECT COUNT(*) FROM chapters) AS total
-    FROM chapters
-    WHERE id = $1;`
-  const results = await query(sql, [id])
+export const queryChapter = async function (chapterNumber) {
+  const sql = `
+  SELECT chapter_number, chapter_title, word_count
+  FROM chapters
+  WHERE chapter_number = $1;`;
+  const results = await query(sql, [chapterNumber])
+ // console.log('Chapters:', results);
   return results.length === 1 ? results[0] : []
 }
 
@@ -42,7 +44,7 @@ export const queryChapters = async function () {
   try {
     const sql = 'SELECT book_id, chapter_number, chapter_title FROM chapters;';
     const results = await query(sql);
-    console.log('Chapters:', results);
+    //console.log('Chapters:', results);
     return results;
   } catch (error) {
     console.error('Error fetching chapters:', error);
@@ -72,13 +74,26 @@ const app = express()
   res.render('pages/toc', { title: 'Guide ToC', chapters })
 })
 .get('/guide/:ch(\\d+)', async function (req, res) {
-  const chapter = await queryChapter(req.params.ch)
-  if (chapter?.title) {
-    res.render('pages/guide', chapter)
+  const chapterNumber = req.params.ch;
+  const totalChapters = await queryChapters(); // Fetch all chapters to calculate total
+  const total = totalChapters.length;
+
+  const chapter = await queryChapter(chapterNumber);
+  
+  if (chapter?.chapter_title) {
+    res.render('pages/guide', {
+      title: chapter.chapter_title,
+      body: chapter.word_count,
+      id: chapter.chapter_number,
+      total: total // Pass the total value to the template
+    });
   } else {
-    res.redirect('/guide')
+    res.redirect('/guide');
   }
 })
+
+
+
 
 // Ready for browsers to connect ///////////////////////////
 const displayPort = function () {
