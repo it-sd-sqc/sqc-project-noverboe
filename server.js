@@ -32,7 +32,7 @@ export const query = async function (sql, params) {
 
 export const queryChapter = async function (chapterNumber) {
   const sql = `
-  SELECT chapter_number, chapter_title, word_count
+  SELECT chapter_number, chapter_title, chapter_body
   FROM chapters
   WHERE chapter_number = $1;`
   const results = await query(sql, [chapterNumber])
@@ -42,7 +42,7 @@ export const queryChapter = async function (chapterNumber) {
 
 export const queryChapters = async function () {
   try {
-    const sql = 'SELECT book_id, chapter_number, chapter_title FROM chapters;'
+    const sql = 'SELECT book_id, chapter_number, chapter_title, word_count FROM chapters;'
     const results = await query(sql)
     // console.log('Chapters:', results);
     return results
@@ -83,7 +83,7 @@ const app = express()
     if (chapter?.chapter_title) {
       res.render('pages/guide', {
         title: chapter.chapter_title,
-        body: chapter.word_count,
+        body: chapter.chapter_body,
         id: chapter.chapter_number,
         total
       })

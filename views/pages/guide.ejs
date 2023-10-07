@@ -1,7 +1,7 @@
 <%- include('../shared/header.ejs') _%>
 <article>
   <h2><%= title %></h2>
-  Word Count: <%- body %>
+  <%- body %>
   <footer>
     <% if (id > 1) { %>
       <a href="/guide/<%= (id - 1) %>">Prev</a>

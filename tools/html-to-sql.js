@@ -99,11 +99,12 @@ CREATE TABLE chapters (
   book_id INT NOT NULL,
   chapter_number INT NOT NULL,
   chapter_title TEXT NOT NULL,
-  word_count INT NOT NULL
+  word_count INT NOT NULL,
+  chapter_body TEXT NOT NULL
 );
 
 INSERT INTO book (book_id, book_name) VALUES (${bookId}, '${bookTitle}');
-INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count) VALUES
+INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES
 `
 
 // Extract guide chapters.
@@ -114,13 +115,14 @@ chapterIds.forEach((id, index) => {
   const titleElement = extractTitle(domRoot, id)
   const chapterElement = domRoot.querySelector(`div#${id}`)
 
-  const chapterContent = chapterElement.text
+  const chapterContent = chapterElement.text.replace(/'/g, "''");
   const wordCount = calculateWordCount(chapterContent)
 
   chapters.push({
     chapter_number: index + 1, // Chapter numbers start from 1
     chapter_title: titleElement,
-    word_count: wordCount
+    word_count: wordCount,
+    chapter_body: chapterContent
   })
 })
 
@@ -132,9 +134,9 @@ try {
 
   // Insert chapter data
   chapters.forEach((chapter, index) => {
-    const { chapter_number, chapter_title, word_count } = chapter
+    const { chapter_number, chapter_title, word_count, chapter_body } = chapter
     const escapedTitle = chapter_title.replace(/'/g, "''")
-    const value = `(${bookId}, ${chapter_number}, '${escapedTitle}', ${word_count})`
+    const value = `(${bookId}, ${chapter_number}, '${escapedTitle}', ${word_count}, '${chapter_body}')`
     if (index === 0) {
       writeFileSync(fd, `${value}`)
     } else {
