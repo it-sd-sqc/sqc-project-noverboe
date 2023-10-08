@@ -25,23 +25,61 @@ import pkg from 'svgoban'
 const { serialize } = pkg
 
 // Configuration ///////////////////////////////////////////
-const bookId = 1
-const srcPath = 'data/AlicesAdventuresInWonderlandLewisCarroll.htm'
 const dstPath = 'docs/generated-schema.sql'
-const chapterIds = [
-  'chap01',
-  'chap02',
-  'chap03',
-  'chap04',
-  'chap05',
-  'chap06',
-  'chap07',
-  'chap08',
-  'chap09',
-  'chap10',
-  'chap11',
-  'chap12'
-]
+const books = [
+  {
+    bookId: 1,
+    srcPath: 'data/AlicesAdventuresInWonderlandLewisCarroll.htm',
+    chapterIds: [
+      'chap01',
+      'chap02',
+      'chap03',
+      'chap04',
+      'chap05',
+      'chap06',
+      'chap07',
+      'chap08',
+      'chap09',
+      'chap10',
+      'chap11',
+      'chap12',
+    ],
+  },
+  {
+    bookId: 2,
+    srcPath: 'data/TheProphetKahlilGibran.htm',
+    chapterIds: [
+      'chap01',
+      'chap02',
+      'chap03',
+      'chap04',
+      'chap05',
+      'chap06',
+      'chap07',
+      'chap08',
+      'chap09',
+      'chap10',
+      'chap11',
+      'chap12',
+      'chap13',
+      'chap14',
+      'chap15',
+      'chap16',
+      'chap17',
+      'chap18',
+      'chap19',
+      'chap20',
+      'chap21',
+      'chap22',
+      'chap23',
+      'chap24',
+      'chap25',
+      'chap26',
+      'chap27',
+      'chap28',
+    ],
+  },
+];
 
 const gobanConfig = {
   size: 19,
@@ -76,78 +114,101 @@ const calculateWordCount = (text) => {
 }
 
 // Conversion //////////////////////////////////////////////
-const src = readFileSync(srcPath, 'utf8')
-const domRoot = parse(src)
+books.forEach((book) => {
+  const src = readFileSync(book.srcPath, 'utf8')
+  const domRoot = parse(src)
 
-// Extract the book title from the HTML
-const bookTitleElement = domRoot.querySelector('title')
-const bookTitle = bookTitleElement.textContent
+  // Extract the book title from the HTML
+  const bookTitleElement = domRoot.querySelector('title')
+  const bookTitle = bookTitleElement.textContent
 
-const sqlHeader = `\\encoding UTF8
+  // Extract guide chapters.
+  const chapters = []
 
-DROP TABLE IF EXISTS book;
-DROP TABLE IF EXISTS chapters;
+  book.chapterIds.forEach((id, index) => {
+    // Extract the title and body
+    const titleElement = extractTitle(domRoot, id)
+    const chapterElement = domRoot.querySelector(`div#${id}`)
 
-CREATE TABLE book (
-  id SERIAL PRIMARY KEY,
-  book_id INT NOT NULL,
-  book_name TEXT NOT NULL
-);
+    const chapterContent = chapterElement.innerHTML.replace(/'/g, "''");
+    const wordCount = calculateWordCount(chapterContent)
 
-CREATE TABLE chapters (
-  id SERIAL PRIMARY KEY,
-  book_id INT NOT NULL,
-  chapter_number INT NOT NULL,
-  chapter_title TEXT NOT NULL,
-  word_count INT NOT NULL,
-  chapter_body TEXT NOT NULL
-);
-
-INSERT INTO book (book_id, book_name) VALUES (${bookId}, '${bookTitle}');
-INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES
-`
-
-// Extract guide chapters.
-const chapters = []
-
-chapterIds.forEach((id, index) => {
-  // Extract the title and body
-  const titleElement = extractTitle(domRoot, id)
-  const chapterElement = domRoot.querySelector(`div#${id}`)
-
-  const chapterContent = chapterElement.text.replace(/'/g, "''");
-  const wordCount = calculateWordCount(chapterContent)
-
-  chapters.push({
-    chapter_number: index + 1, // Chapter numbers start from 1
-    chapter_title: titleElement,
-    word_count: wordCount,
-    chapter_body: chapterContent
+    chapters.push({
+      chapter_number: index + 1, // Chapter numbers start from 1
+      chapter_title: titleElement,
+      word_count: wordCount,
+      chapter_body: chapterContent
+    })
   })
+
+  // Output the data as SQL.
+  const fd = openSync(dstPath, 'w')
+
+  try {
+    // Drop tables outside of the loop (before processing any books)
+    writeFileSync(fd, `\\encoding UTF8
+  DROP TABLE IF EXISTS book;
+  DROP TABLE IF EXISTS chapters;
+  CREATE TABLE book (
+    id SERIAL PRIMARY KEY,
+    book_id INT NOT NULL,
+    book_name TEXT NOT NULL
+  );
+  CREATE TABLE chapters (
+    id SERIAL PRIMARY KEY,
+    book_id INT NOT NULL,
+    chapter_number INT NOT NULL,
+    chapter_title TEXT NOT NULL,
+    word_count INT NOT NULL,
+    chapter_body TEXT NOT NULL
+  );
+  `);
+  
+    books.forEach((book) => {
+      const src = readFileSync(book.srcPath, 'utf8')
+      const domRoot = parse(src)
+  
+      // Extract the book title from the HTML
+      const bookTitleElement = domRoot.querySelector('title')
+      const bookTitle = bookTitleElement.textContent
+  
+      // Insert book data
+      writeFileSync(fd, `INSERT INTO book (book_id, book_name) VALUES (${book.bookId}, '${bookTitle}');`);
+  
+      // Extract guide chapters.
+      const chapters = []
+  
+      book.chapterIds.forEach((id, index) => {
+        // Extract the title and body
+        const titleElement = extractTitle(domRoot, id)
+        const chapterElement = domRoot.querySelector(`div#${id}`)
+  
+        const chapterContent = chapterElement.innerHTML.replace(/'/g, "''");
+        const wordCount = calculateWordCount(chapterContent)
+  
+        chapters.push({
+          chapter_number: index + 1, // Chapter numbers start from 1
+          chapter_title: titleElement,
+          word_count: wordCount,
+          chapter_body: chapterContent
+        })
+      })
+  
+      // Insert chapter data
+      chapters.forEach((chapter, index) => {
+        const { chapter_number, chapter_title, word_count, chapter_body } = chapter
+        const escapedTitle = chapter_title.replace(/'/g, "''")
+        const value = `INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (${book.bookId}, ${chapter_number}, '${escapedTitle}', ${word_count}, '${chapter_body}');`;
+        writeFileSync(fd, value);
+      })
+  
+    })
+  
+    console.log('success')
+    closeSync(fd)
+    
+  } catch (msg) {
+    console.log('caught error: ' + msg)
+  }
 })
 
-// Output the data as SQL.
-const fd = openSync(dstPath, 'w')
-
-try {
-  writeFileSync(fd, sqlHeader)
-
-  // Insert chapter data
-  chapters.forEach((chapter, index) => {
-    const { chapter_number, chapter_title, word_count, chapter_body } = chapter
-    const escapedTitle = chapter_title.replace(/'/g, "''")
-    const value = `(${bookId}, ${chapter_number}, '${escapedTitle}', ${word_count}, '${chapter_body}')`
-    if (index === 0) {
-      writeFileSync(fd, `${value}`)
-    } else {
-      writeFileSync(fd, `,\n${value}`)
-    }
-  })
-
-  writeFileSync(fd, ';\n\n')
-  console.log('success')
-} catch (msg) {
-  console.log('caught error: ' + msg)
-}
-
-closeSync(fd)

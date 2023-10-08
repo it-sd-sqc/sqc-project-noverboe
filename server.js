@@ -30,20 +30,25 @@ export const query = async function (sql, params) {
   return results
 }
 
-export const queryChapter = async function (chapterNumber) {
+export const queryChapter = async function (bookId, chapterNumber) {
   const sql = `
   SELECT chapter_number, chapter_title, chapter_body
   FROM chapters
-  WHERE chapter_number = $1;`
-  const results = await query(sql, [chapterNumber])
+  WHERE book_id = $1 AND chapter_number = $2;`
+  const results = await query(sql, [bookId, chapterNumber])
   // console.log('Chapters:', results);
   return results.length === 1 ? results[0] : []
 }
 
-export const queryChapters = async function () {
+export const queryChapters = async function (bookId) {
   try {
-    const sql = 'SELECT book_id, chapter_number, chapter_title, word_count FROM chapters;'
-    const results = await query(sql)
+    const sql = `
+    SELECT c.book_id, c.chapter_number, c.chapter_title, c.word_count, b.book_name
+    FROM chapters c
+    INNER JOIN book b ON c.book_id = b.book_id
+    WHERE c.book_id = $1;
+  `;
+    const results = await query(sql, [bookId])
     // console.log('Chapters:', results);
     return results
   } catch (error) {
@@ -68,24 +73,29 @@ const app = express()
   .get('/about', function (req, res) {
     res.render('pages/about', { title: 'About' })
   })
-  .get('/guide', async function (req, res) {
-    console.log('Route /guide called')
-    const chapters = await queryChapters()
-    res.render('pages/toc', { title: 'Guide ToC', chapters })
+  .get('/guide/:bookId(\\d+)', async function (req, res) {
+    const bookId = req.params.bookId;
+    console.log('Route /guide called with bookId:', bookId);
+    const chapters = await queryChapters(bookId);
+    res.render('pages/toc', { title: `Table of contents for: ${chapters[0].book_name}`, chapters, bookId });
   })
-  .get('/guide/:ch(\\d+)', async function (req, res) {
+  
+  .get('/guide/:bookId(\\d+)/:ch(\\d+)', async function (req, res) {
+    const bookId = req.params.bookId
     const chapterNumber = req.params.ch
-    const totalChapters = await queryChapters()
+    console.log('bookId:', bookId);
+    console.log('chapterNumber:', chapterNumber);
+    const totalChapters = await queryChapters(bookId)
     const total = totalChapters.length
 
-    const chapter = await queryChapter(chapterNumber)
+    const chapter = await queryChapter(bookId, chapterNumber)
 
     if (chapter?.chapter_title) {
       res.render('pages/guide', {
-        title: chapter.chapter_title,
         body: chapter.chapter_body,
         id: chapter.chapter_number,
-        total
+        total,
+        bookId
       })
     } else {
       res.redirect('/guide')
