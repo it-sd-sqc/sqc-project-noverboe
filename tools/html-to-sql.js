@@ -19,11 +19,6 @@ import { closeSync, openSync, readFileSync, writeFileSync }
   from 'node:fs'
 import { parse } from 'node-html-parser'
 
-// This module uses the CommonJS module format, so we need
-// to import it differently.
-import pkg from 'svgoban'
-const { serialize } = pkg
-
 // Configuration ///////////////////////////////////////////
 const dstPath = 'docs/generated-schema.sql'
 const books = [
@@ -81,13 +76,6 @@ const books = [
   },
 ];
 
-const gobanConfig = {
-  size: 19,
-  theme: 'classic',
-  coordSystem: 'A1',
-  noMargin: false,
-  hideMargin: false
-}
 
 // Utility functions ///////////////////////////////////////
 const extractTitle = function (root, id) {
@@ -109,8 +97,22 @@ const extractTitle = function (root, id) {
 }
 
 const calculateWordCount = (text) => {
-  const words = text.split(/\s+/)
-  return words.length
+  /* 
+    POSSIBLE TODO 
+    Remove chapter title and title description?
+  */
+
+  // Remove HTML tags, replace multiple spaces with a single space, 
+  // replace newline characters with spaces, replace smart quotes with standard quotes, 
+  // and split the text into words
+  const words = text.replace(/<[^>]*>/g, ' ')
+                     .replace(/\s+/g, ' ')
+                     .replace(/\n/g, ' ')
+                     .replace(/[\u2018\u2019\u201C\u201D]/g, ' ')
+                     .split(/\s|\n/);
+  // Filter out any empty strings resulting from the split, commas, and &nbsp;
+  const filteredWords = words.filter(word => word && word !== ',' && !word.includes('&nbsp;'));
+  return filteredWords.length;
 }
 
 // Conversion //////////////////////////////////////////////
