@@ -1,0 +1,41 @@
+{
+  "name": "sqc-project-noverboe",
+  "version": "1.0.0",
+  "description": "Your given and family name.",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "generate": "node tools/html-to-sql.js && psql -U postgres -f ./docs/generated-schema.sql",
+    "test": "jasmine && standard \"**/*.js\" && ejslint \"views/**/*.ejs\" && stylelint \"**/*.css\" && html-validator \"public/**/*.html\"",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/it-sd-sqc/sqc-project-noverboe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/it-sd-sqc/sqc-project-noverboe/issues"
+  },
+  "homepage": "https://github.com/it-sd-sqc/sqc-project-noverboe#readme",
+  "devDependencies": {
+    "ejs-lint": "^2.0.0",
+    "html-validate": "^8.4.1",
+    "standard": "^17.1.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "node-html-parser": "^6.1.10",
+    "pg": "^8.11.3",
+    "svgoban": "^1.0.0"
+  }
+}
