@@ -46,7 +46,7 @@ export const queryChapters = async function (bookId) {
     FROM chapters c
     INNER JOIN book b ON c.book_id = b.book_id
     WHERE c.book_id = $1;
-  `;
+  `
     const results = await query(sql, [bookId])
     return results
   } catch (error) {
@@ -72,11 +72,11 @@ const app = express()
     res.render('pages/about', { title: 'About' })
   })
   .get('/guide/:bookId(\\d+)', async function (req, res) {
-    const bookId = req.params.bookId;
-    const chapters = await queryChapters(bookId);
-    res.render('pages/toc', { title: `Table of contents for: ${chapters[0].book_name}`, chapters, bookId });
+    const bookId = req.params.bookId
+    const chapters = await queryChapters(bookId)
+    res.render('pages/toc', { title: `Table of contents for: ${chapters[0].book_name}`, chapters, bookId })
   })
-  
+
   .get('/guide/:bookId(\\d+)/:ch(\\d+)', async function (req, res) {
     const bookId = req.params.bookId
     const chapterNumber = req.params.ch

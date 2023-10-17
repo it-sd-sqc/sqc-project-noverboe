@@ -16,3 +16,8 @@ function toggleMode () {
     trigger = true
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.querySelector('#dark-mode-button')
+  button.addEventListener('click', toggleMode)
+})

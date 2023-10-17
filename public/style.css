@@ -23,6 +23,10 @@ nav li {
   margin-right: 20px;
 }
 
+a {
+  color: #007bff;
+}
+
 nav a {
   text-decoration: none;
   color: #fff;
@@ -34,10 +38,6 @@ button {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-}
-
-a {
-  color: #007bff;
 }
 
 .dark {
@@ -61,7 +61,7 @@ article {
   text-align: center;
 }
 
-.chapterNav {
+.chapter-nav {
   margin: 0 auto;
   font-size: 28px;
 }
