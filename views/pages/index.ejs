@@ -1,12 +1,12 @@
 <%- include('../shared/header.ejs') %>
+<article class="container center" id="main-article">
+  <h1>Pick A Book</h1>
 
-<h1>A Basic Web Server</h1>
-
-<div>
-  <button onclick="location.href='/guide/1'">Book 1</button>
-  <button onclick="location.href='/guide/2'">Book 2</button>
-</div>
-
-<%- include('../shared/footer.ejs') %>
+  <div class="library-shelf">
+    <img src="/bookShelf.jpg" alt="Library Shelf">
+    <a href='/guide/1' class="book-link"><img src="AliceBook.jpg" alt="Alices Adventures in Wonderland"></a>
+    <a href='/guide/2' class="book-link"><img src="ProphetBook.png" alt="The Prophet"></a>
+  </div>
+</article>
 </body>
 </html>

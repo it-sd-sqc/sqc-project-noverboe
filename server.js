@@ -36,7 +36,6 @@ export const queryChapter = async function (bookId, chapterNumber) {
   FROM chapters
   WHERE book_id = $1 AND chapter_number = $2;`
   const results = await query(sql, [bookId, chapterNumber])
-  // console.log('Chapters:', results);
   return results.length === 1 ? results[0] : []
 }
 
@@ -49,7 +48,6 @@ export const queryChapters = async function (bookId) {
     WHERE c.book_id = $1;
   `;
     const results = await query(sql, [bookId])
-    // console.log('Chapters:', results);
     return results
   } catch (error) {
     console.error('Error fetching chapters:', error)
@@ -75,7 +73,6 @@ const app = express()
   })
   .get('/guide/:bookId(\\d+)', async function (req, res) {
     const bookId = req.params.bookId;
-    console.log('Route /guide called with bookId:', bookId);
     const chapters = await queryChapters(bookId);
     res.render('pages/toc', { title: `Table of contents for: ${chapters[0].book_name}`, chapters, bookId });
   })
@@ -83,8 +80,6 @@ const app = express()
   .get('/guide/:bookId(\\d+)/:ch(\\d+)', async function (req, res) {
     const bookId = req.params.bookId
     const chapterNumber = req.params.ch
-    console.log('bookId:', bookId);
-    console.log('chapterNumber:', chapterNumber);
     const totalChapters = await queryChapters(bookId)
     const total = totalChapters.length
 

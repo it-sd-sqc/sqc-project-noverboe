@@ -1,12 +1,12 @@
 <%- include('../shared/header.ejs') _%>
-<article>
+<article class="container" id="main-article">
   <%- body %>
   <footer>
     <% if (id > 1) { %>
-      <a href="/guide/<%= bookId %>/<%= (id - 1) %>">Prev</a>
+      <a href="/guide/<%= bookId %>/<%= (id - 1) %>" class="chapterNav">Prev</a>
     <% } %>
     <% if (id < total) { %>
-      <a href="/guide/<%= bookId %>/<%= (id + 1) %>">Next</a>
+      <a href="/guide/<%= bookId %>/<%= (id + 1) %>" class="chapterNav" id="right">Next</a>
     <% } %>
   </footer>  
 </article>

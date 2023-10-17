@@ -1,4 +1,92 @@
+
+body {
+  background-color: #f0e6d2;
+  color: #333;
+  font-family: Georgia, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+button {
+  background-color: #742a2a;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: #007bff;
+}
+
 .dark {
-background-color: black;
-color: white;
+  background-color: #000 !important;
+  color: #fff;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+}
+
+article {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.chapterNav {
+  margin: 0 auto;
+  font-size: 28px;
+}
+
+#right {
+  float: right;
+}
+
+.library-shelf {
+  position: relative;
+  background: url('library-shelf-image.jpg') no-repeat;
+  width: 800px;
+  height: 400px;
+}
+
+.book-link {
+  position: absolute;
+  z-index: 1;
+}
+
+.book-link:nth-child(3) {
+  top: 100px;
+  left: 200px;
+}
+
+.book-link:nth-child(2) {
+  top: 350px;
 }

@@ -1,15 +1,16 @@
 <%- include('../shared/header.ejs') %>
-<article>
+<article class="container" id="main-article">
   <h2><%= title %></h2>
-  <ul>
+  <ol>
     <% chapters.forEach((chapter) => { %>
       <li>
+        <span><%= chapter.chapter_title %></span><br>
         <span>Word Count: <%= chapter.word_count %></span><br>
-        <span>Chapter Title: <%= chapter.chapter_title %></span><br>
-        <a href="/guide/<%= bookId %>/<%= chapter.chapter_number %>">Read Chapter</a>
+        <a href="/guide/<%= bookId %>/<%= chapter.chapter_number %>">Read Chapter<br></a>
+        <p></p>
       </li>
     <% }) %>
-  </ul>
+  </ol>
 </article>
 </body>
 </html>

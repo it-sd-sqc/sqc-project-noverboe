@@ -80,7 +80,6 @@ const books = [
 // Utility functions ///////////////////////////////////////
 const extractTitle = function (root, id) {
   const chapterElement = root.querySelector(`div#${id}`)
-  console.log('chapterElement: ' + chapterElement)
 
   if (chapterElement) {
     const title = chapterElement.querySelector('h2')
@@ -205,8 +204,7 @@ books.forEach((book) => {
       })
   
     })
-  
-    console.log('success')
+
     closeSync(fd)
     
   } catch (msg) {
