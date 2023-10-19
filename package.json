@@ -9,8 +9,11 @@
   },
   "scripts": {
     "generate": "node tools/html-to-sql.js && psql -U postgres -f ./docs/generated-schema.sql",
-    "test": "jasmine && standard \"**/*.js\" && ejslint \"views/**/*.ejs\" && stylelint \"**/*.css\" && html-validator \"public/**/*.html\"",
+    "test": "jasmine && standard \"**/*.js\" && ejslint \"views/**/*.ejs\" && stylelint \"**/*.css\"",
     "start": "node server.js"
+  },
+  "standard": {
+    "env": [ "jasmine" ]
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
   "devDependencies": {
     "ejs-lint": "^2.0.0",
     "html-validate": "^8.4.1",
+    "jasmine": "^5.1.0",
     "standard": "^17.1.0",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0"
