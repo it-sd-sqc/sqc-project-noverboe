@@ -14,7 +14,6 @@ file.
 ***********************************************************/
 
 // Dependencies ////////////////////////////////////////////
-import { strict as assert } from 'node:assert'
 import { closeSync, openSync, readFileSync, writeFileSync }
   from 'node:fs'
 import { parse } from 'node-html-parser'
@@ -37,8 +36,8 @@ const books = [
       'chap09',
       'chap10',
       'chap11',
-      'chap12',
-    ],
+      'chap12'
+    ]
   },
   {
     bookId: 2,
@@ -71,11 +70,10 @@ const books = [
       'chap25',
       'chap26',
       'chap27',
-      'chap28',
-    ],
-  },
-];
-
+      'chap28'
+    ]
+  }
+]
 
 // Utility functions ///////////////////////////////////////
 const extractTitle = function (root, id) {
@@ -96,32 +94,28 @@ const extractTitle = function (root, id) {
 }
 
 const calculateWordCount = (text) => {
-  /* 
-    POSSIBLE TODO 
+  /*
+    POSSIBLE TODO
     Remove chapter title and title description?
   */
 
-  // Remove HTML tags, replace multiple spaces with a single space, 
-  // replace newline characters with spaces, replace smart quotes with standard quotes, 
+  // Remove HTML tags, replace multiple spaces with a single space,
+  // replace newline characters with spaces, replace smart quotes with standard quotes,
   // and split the text into words
   const words = text.replace(/<[^>]*>/g, ' ')
-                     .replace(/\s+/g, ' ')
-                     .replace(/\n/g, ' ')
-                     .replace(/[\u2018\u2019\u201C\u201D]/g, ' ')
-                     .split(/\s|\n/);
+    .replace(/\s+/g, ' ')
+    .replace(/\n/g, ' ')
+    .replace(/[\u2018\u2019\u201C\u201D]/g, ' ')
+    .split(/\s|\n/)
   // Filter out any empty strings resulting from the split, commas, and &nbsp;
-  const filteredWords = words.filter(word => word && word !== ',' && !word.includes('&nbsp;'));
-  return filteredWords.length;
+  const filteredWords = words.filter(word => word && word !== ',' && !word.includes('&nbsp;'))
+  return filteredWords.length
 }
 
 // Conversion //////////////////////////////////////////////
 books.forEach((book) => {
   const src = readFileSync(book.srcPath, 'utf8')
   const domRoot = parse(src)
-
-  // Extract the book title from the HTML
-  const bookTitleElement = domRoot.querySelector('title')
-  const bookTitle = bookTitleElement.textContent
 
   // Extract guide chapters.
   const chapters = []
@@ -131,7 +125,7 @@ books.forEach((book) => {
     const titleElement = extractTitle(domRoot, id)
     const chapterElement = domRoot.querySelector(`div#${id}`)
 
-    const chapterContent = chapterElement.innerHTML.replace(/'/g, "''");
+    const chapterContent = chapterElement.innerHTML.replace(/'/g, "''")
     const wordCount = calculateWordCount(chapterContent)
 
     chapters.push({
@@ -163,52 +157,49 @@ books.forEach((book) => {
     word_count INT NOT NULL,
     chapter_body TEXT NOT NULL
   );
-  `);
-  
+  `)
+
     books.forEach((book) => {
       const src = readFileSync(book.srcPath, 'utf8')
       const domRoot = parse(src)
-  
+
       // Extract the book title from the HTML
       const bookTitleElement = domRoot.querySelector('title')
       const bookTitle = bookTitleElement.textContent
-  
+
       // Insert book data
-      writeFileSync(fd, `INSERT INTO book (book_id, book_name) VALUES (${book.bookId}, '${bookTitle}');`);
-  
+      writeFileSync(fd, `INSERT INTO book (book_id, book_name) VALUES (${book.bookId}, '${bookTitle}');`)
+
       // Extract guide chapters.
       const chapters = []
-  
+
       book.chapterIds.forEach((id, index) => {
         // Extract the title and body
         const titleElement = extractTitle(domRoot, id)
         const chapterElement = domRoot.querySelector(`div#${id}`)
-  
-        const chapterContent = chapterElement.innerHTML.replace(/'/g, "''");
+
+        const chapterContent = chapterElement.innerHTML.replace(/'/g, "''")
         const wordCount = calculateWordCount(chapterContent)
-  
+
         chapters.push({
-          chapter_number: index + 1, // Chapter numbers start from 1
-          chapter_title: titleElement,
-          word_count: wordCount,
-          chapter_body: chapterContent
+          chapterNumber: index + 1, // Chapter numbers start from 1
+          chapterTitle: titleElement,
+          wordCount,
+          chapterBody: chapterContent
         })
       })
-  
+
       // Insert chapter data
       chapters.forEach((chapter, index) => {
-        const { chapter_number, chapter_title, word_count, chapter_body } = chapter
-        const escapedTitle = chapter_title.replace(/'/g, "''")
-        const value = `INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (${book.bookId}, ${chapter_number}, '${escapedTitle}', ${word_count}, '${chapter_body}');`;
-        writeFileSync(fd, value);
+        const { chapterNumber, chapterTitle, wordCount, chapterBody } = chapter
+        const escapedTitle = chapterTitle.replace(/'/g, "''")
+        const value = `INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (${book.bookId}, ${chapterNumber}, '${escapedTitle}', ${wordCount}, '${chapterBody}');`
+        writeFileSync(fd, value)
       })
-  
     })
 
     closeSync(fd)
-    
   } catch (msg) {
     console.log('caught error: ' + msg)
   }
 })
-

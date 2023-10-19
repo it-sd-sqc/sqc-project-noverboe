@@ -15,7 +15,7 @@
     chapter_body TEXT NOT NULL
   );
   INSERT INTO book (book_id, book_name) VALUES (1, 'Alices Adventures in Wonderland, by Lewis Carroll');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 1, 'CHAPTER I.
-Down the Rabbit-Hole', 2211, '
+Down the Rabbit-Hole', 2148, '
 <h2>CHAPTER I.<br>Down the Rabbit-Hole</h2>
 <p>
 Alice was beginning to get very tired of sitting by her sister on the bank, and
@@ -245,7 +245,7 @@ So she set to work, and very soon finished off the cake.
 *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 2, 'CHAPTER II.
-The Pool of Tears', 2153, '
+The Pool of Tears', 2099, '
 <h2>CHAPTER II.<br>The Pool of Tears</h2>
 <p>
 "Curiouser and curiouser!” cried Alice (she was so much surprised,
@@ -473,7 +473,7 @@ an Eaglet, and several other curious creatures. Alice led the way, and the
 whole party swam to the shore.
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 3, 'CHAPTER III.
-A Caucus-Race and a Long Tale', 1799, '
+A Caucus-Race and a Long Tale', 1706, '
 <h2>CHAPTER III.<br>A Caucus-Race and a Long Tale</h2>
 <p>
 They were indeed a queer-looking party that assembled on the bank—the
@@ -760,7 +760,7 @@ half hoping that the Mouse had changed his mind, and was coming back to finish
 his story.
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 4, 'CHAPTER IV.
-The Rabbit Sends in a Little Bill', 2701, '
+The Rabbit Sends in a Little Bill', 2621, '
 <h2>CHAPTER IV.<br>The Rabbit Sends in a Little Bill</h2>
 <p>
 It was the White Rabbit, trotting slowly back again, and looking anxiously
@@ -1066,7 +1066,7 @@ sitting on the top with its arms folded, quietly smoking a long hookah, and
 taking not the smallest notice of her or of anything else.
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 5, 'CHAPTER V.
-Advice from a Caterpillar', 2319, '
+Advice from a Caterpillar', 2154, '
 <h2>CHAPTER V.<br>Advice from a Caterpillar</h2>
 <p>
 The Caterpillar and Alice looked at each other for some time in silence: at
@@ -1434,7 +1434,7 @@ she began nibbling at the righthand bit again, and did not venture to go near
 the house till she had brought herself down to nine inches high.
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 6, 'CHAPTER VI.
-Pig and Pepper', 2760, '
+Pig and Pepper', 2592, '
 <h2>CHAPTER VI.<br>Pig and Pepper</h2>
 <p>
 For a minute or two she stood looking at the house, and wondering what to do
@@ -1842,7 +1842,7 @@ should be raving mad after all! I almost wish I''d gone to see the Hatter
 instead!”
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 7, 'CHAPTER VII.
-A Mad Tea-Party', 2501, '
+A Mad Tea-Party', 2294, '
 <h2>CHAPTER VII.<br>A Mad Tea-Party</h2>
 <p>
 There was a table set out under a tree in front of the house, and the March
@@ -2302,7 +2302,7 @@ walked down the little passage: and <i>then</i>—she found herself at last
 in the beautiful garden, among the bright flower-beds and the cool fountains.
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 8, 'CHAPTER VIII.
-The Queen''s Croquet-Ground', 2630, '
+The Queen''s Croquet-Ground', 2490, '
 <h2>CHAPTER VIII.<br>The Queen''s Croquet-Ground</h2>
 <p>
 A large rose-tree stood near the entrance of the garden: the roses growing on
@@ -2673,7 +2673,7 @@ the executioner ran wildly up and down looking for it, while the rest of the
 party went back to the game.
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 9, 'CHAPTER IX.
-The Mock Turtle''s Story', 2457, '
+The Mock Turtle''s Story', 2282, '
 <h2>CHAPTER IX.<br>The Mock Turtle''s Story</h2>
 <p>
 "You can''t think how glad I am to see you again, you dear old
@@ -3099,7 +3099,7 @@ holiday?”
 very decided tone: "tell her something about the games now.”
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 10, 'CHAPTER X.
-The Lobster Quadrille', 2193, '
+The Lobster Quadrille', 2031, '
 <h2>CHAPTER X.<br>The Lobster Quadrille</h2>
 <p>
 The Mock Turtle sighed deeply, and drew the back of one flapper across his
@@ -3481,7 +3481,7 @@ came, carried on the breeze that followed them, the melancholy words:—
 &nbsp;&nbsp;&nbsp;&nbsp;Beautiful, beautiful Soup!”
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 11, 'CHAPTER XI.
-Who Stole the Tarts?', 2028, '
+Who Stole the Tarts?', 1877, '
 <h2>CHAPTER XI.<br>Who Stole the Tarts?</h2>
 <p>
 The King and Queen of Hearts were seated on their throne when they arrived,
@@ -3817,7 +3817,7 @@ her surprise, when the White Rabbit read out, at the top of his shrill little
 voice, the name "Alice!”
 </p>
 ');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (1, 12, 'CHAPTER XII.
-Alice''s Evidence', 2246, '
+Alice''s Evidence', 2112, '
 <h2>CHAPTER XII.<br>Alice''s Evidence</h2>
 <p>
 "Here!” cried Alice, quite forgetting in the flurry of the moment
@@ -4174,7 +4174,7 @@ pleasure in all their simple joys, remembering her own child-life, and the
 happy summer days.
 </p>
 <h5>THE END </h5>
-');INSERT INTO book (book_id, book_name) VALUES (2, 'The Prophet, by Kahlil Gibran');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 1, 'The Coming of the Ship', 1371, '
+');INSERT INTO book (book_id, book_name) VALUES (2, 'The Prophet, by Kahlil Gibran');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 1, 'The Coming of the Ship', 1210, '
 <h1>THE PROPHET</h1>
 <h2>The Coming of the Ship</h2>
 <p class="pfirst">
@@ -4321,8 +4321,6 @@ also.
 These things he said in words. But much in his heart remained unsaid. For <a id="link12"></a>he himself could not speak his deeper secret.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0020.jpg" id="id-1655059553022835579">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0020.jpg" width="457" id="id-8873091721055843875"></a>
 </div>
 <p>
 And when he entered into the city all the people came to meet him, and they
@@ -4415,7 +4413,7 @@ And he answered,
 People of Orphalese, of what can I <a id="link15"></a>speak save
 of that which is even now moving within your souls?
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 2, 'On Love', 556, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 2, 'On Love', 472, '
 <h2>On Love</h2>
 <p>
 Then said Almitra, Speak to us of <b><i>Love</i></b>.
@@ -4536,10 +4534,8 @@ And then to sleep with a prayer for the beloved in your heart and a song of
 praise upon your lips.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0029.jpg" id="id-2674103464643058667">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0029.jpg" width="458" id="id-6497598972044033485"></a>
 </div>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 3, 'On Marriage', 248, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 3, 'On Marriage', 198, '
     <h2>On Marriage</h2>
 <p>
 <a id="link19"></a>Then Almitra spoke again and said, And what of
@@ -4595,10 +4591,8 @@ For the pillars of the temple stand apart,
 And the oak tree and the cypress grow not in each other’s shadow.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0032.jpg" id="id-3096239619202818698">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0032.jpg" width="460" id="id-3933336253716560592"></a>
 </div>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 4, 'On Children', 228, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 4, 'On Children', 196, '
     <h2>On Children</h2>
 <p>
 <a id="link21"></a>And a woman who held a babe against her bosom
@@ -4650,7 +4644,7 @@ Let your bending in the Archer’s hand be for gladness;
 For even as he loves the arrow that flies, so He loves also the bow that is
 stable.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 5, 'On Giving', 615, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 5, 'On Giving', 519, '
     <h2>On Giving</h2>
 <p>
 <a id="link23"></a>Then said a rich man, Speak to us of
@@ -4709,8 +4703,6 @@ Through the hands of such as these God speaks, and from behind their eyes He
 smiles upon the earth.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0039.jpg" id="id-5849626961867618023">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0039.jpg" width="457" id="id-5968229167124993056"></a>
 </div>
 <p>
 It is well to give when asked, but it is better to give unasked, through
@@ -4775,10 +4767,8 @@ For to be overmindful of your debt, is ito doubt his generosity who has the
 freehearted earth for mother, and God for father.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0042.jpg" id="id-6574244923513323753">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0042.jpg" width="461" id="id-8336965875594718410"></a>
 </div>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 6, 'On Eating and Drinking', 339, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 6, 'On Eating and Drinking', 299, '
     <h2>On Eating and Drinking</h2>
 <p>
 <a id="link27"></a>Then an old man, a keeper of an inn, said,
@@ -4843,7 +4833,7 @@ there be in your heart a song for each cup;
 And let there be in the song a remembrance for the autumn days, and for the
 vineyard, and for the winepress.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 7, 'On Work', 676, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 7, 'On Work', 611, '
     <h2>On Work</h2>
 <p>
 <a id="link30"></a> Then a ploughman said, Speak to us of
@@ -4963,7 +4953,7 @@ the wine. <a id="link34"></a>And if you sing though as angels,
 and love not the singing, you muffle man’s ears to the voices of the day
 and the voices of the night.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 8, 'On Joy and Sorrow', 276, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 8, 'On Joy and Sorrow', 241, '
     <h2>On Joy and Sorrow</h2>
 <p>
 <a id="link35"></a>Then a woman said, Speak to us of <b><i>Joy
@@ -5023,7 +5013,7 @@ Only when you are empty are you at standstill and balanced.
 When the treasure-keeper lifts you to weigh his gold and his silver, needs must
 your joy or your sorrow rise or fall.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 9, 'On Houses', 565, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 9, 'On Houses', 502, '
     <h2>On Houses</h2>
 <p>
 <a id="link37"></a>Then a mason came forth and said, Speak to us
@@ -5132,7 +5122,7 @@ nor shelter your longing.
 For that which is boundless in you abides in the mansion of the sky, whose door
 is the morning mist, and whose windows are the songs and the silences of night.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 10, 'On Clothes', 218, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 10, 'On Clothes', 191, '
     <h2>On Clothes</h2>
 <p>
 <a id="link41"></a>And the weaver said, Speak to us of
@@ -5177,7 +5167,7 @@ fouling of the mind?
 And forget not that the earth delights to feel your bare feet and the winds
 long to play with your hair.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 11, 'On Buying and Selling', 304, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 11, 'On Buying and Selling', 272, '
     <h2>On Buying and Selling</h2>
 <p>
 <a id="link43"></a>And a merchant said, Speak to us of
@@ -5233,7 +5223,7 @@ empty hands.
 For the master spirit of the earth shall not sleep peacefully upon the wind
 till the needs of the least of you are satisfied.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 12, 'On Crime and Punishment', 883, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 12, 'On Crime and Punishment', 766, '
     <h2>On Crime and Punishment</h2>
 <p>
 <a id="link45"></a>Then one of the judges of the city stood forth
@@ -5303,8 +5293,6 @@ without the hidden will of you all.
 Like a procession you walk together towards your god-self.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0064.jpg" id="id-48281514701492228">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0064.jpg" width="458" id="id-3008727297735084461"></a>
 </div>
 <p>
 You are the way and the wayfarers.
@@ -5409,7 +5397,7 @@ in twilight between the night of his pigmy-self and the day of his god-self,
 And that the corner-stone of the temple is not higher than the lowest stone in
 its foundation.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 13, 'On Laws', 413, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 13, 'On Laws', 364, '
     <h2>On Laws</h2>
 <p>
 <a id="link51"></a>Then a lawyer said, But what of our
@@ -5495,7 +5483,7 @@ leave it in no man’s path?
 People of Orphalese, you can muffle the drum, and you can loosen the strings of
 the lyre, but who shall command the skylark not to sing?
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 14, 'On Freedom', 491, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 14, 'On Freedom', 443, '
     <h2>On Freedom</h2>
 <p>
 <a id="link54"></a>And an orator said, Speak to us of
@@ -5581,7 +5569,7 @@ shadow to another light.
 And thus your freedom when it loses its fetters becomes itself the fetter of a
 greater freedom.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 15, 'On Reason and Passion', 360, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 15, 'On Reason and Passion', 329, '
     <h2>On Reason and Passion</h2>
 <p>
 <a id="link57"></a>And the priestess spoke again and said: Speak
@@ -5642,7 +5630,7 @@ sky,—then let your heart say in awe, “God moves in passion.”
 And since you are a breath in God’s sphere, and a leaf in God’s
 forest, you too should rest in reason and move in passion.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 16, 'On Pain', 206, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 16, 'On Pain', 183, '
     <h2>On Pain</h2>
 <p>
 <a id="link60"></a>And a woman spoke, saying, Tell us of
@@ -5682,7 +5670,7 @@ tranquillity: For his hand, though heavy and hard, is guided by the tender hand
 of the Unseen, And the cup he brings, though it burn your lips, has been
 fashioned of the clay which the Potter has moistened with His own sacred tears.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 17, 'On Self-Knowledge', 248, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 17, 'On Self-Knowledge', 198, '
     <h2>On Self-Knowledge</h2>
 <p>
 <a id="link62"></a>And a man said, Speak to us of
@@ -5741,10 +5729,8 @@ The soul walks not upon a line, neither does it grow like a reed.
 The soul unfolds itself, like a lotus of countless petals.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0083.jpg" id="id-2120352893554576064">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0083.jpg" width="462" id="id-1372034249788313338"></a>
 </div>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 18, 'On Teaching', 228, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 18, 'On Teaching', 208, '
     <h2>On Teaching</h2>
 <p>
 <a id="link64"></a>Then said a teacher, Speak to us of
@@ -5783,7 +5769,7 @@ And even as each one of you stands alone in God’s knowledge, so must each
 one of you be alone in his knowledge of God and in his understanding of the
 earth.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 19, 'On Friendship', 313, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 19, 'On Friendship', 271, '
     <h2>On Friendship</h2>
 <p>
 <a id="link66"></a>And a youth said, Speak to us of
@@ -5849,7 +5835,7 @@ pleasures.
 <p>
 For in the dew of little things the heart finds its morning and is refreshed.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 20, 'On Talking', 264, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 20, 'On Talking', 230, '
     <h2>On Talking</h2>
 <p>
 <a id="link68"></a>And then a scholar said, Speak of
@@ -5905,7 +5891,7 @@ remembered
 <p>
 When the colour is forgotten and the vessel is no more.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 21, 'On Time', 225, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 21, 'On Time', 200, '
     <h2>On Time</h2>
 <p>
 <a id="link70"></a>And an astronomer said, Master, what of
@@ -5952,7 +5938,7 @@ encircle all the other seasons,
 <p>
 And let today embrace the past with remembrance and the future with longing.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 22, 'On Good and Evil', 488, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 22, 'On Good and Evil', 427, '
     <h2>On Good and Evil</h2>
 <p>
 <a id="link72"></a>And one of the elders of the city said, Speak
@@ -6048,7 +6034,7 @@ longs little, “Wherefore are you slow and halting?”
 For the truly good ask not the naked, “Where is your garment?” nor
 the houseless, “What has befallen your house?”
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 23, 'On Prayer', 429, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 23, 'On Prayer', 369, '
     <h2>On Prayer</h2>
 <p>
 <a id="link76"></a>Then a priestess said, Speak to us of
@@ -6127,10 +6113,8 @@ in us:
 Thou art our need; and in giving us more of thyself thou givest us all.”
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0100.jpg" id="id-502118520755178077">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0100.jpg" width="453" id="id-7850602171029245328"></a>
 </div>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 24, 'On Pleasure', 614, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 24, 'On Pleasure', 526, '
     <h2>On Pleasure</h2>
 <p>
 <a id="link79"></a>Then a hermit, who visited the city once a
@@ -6269,7 +6253,7 @@ and an ecstasy.
 <p>
 People of Orphalese, be in your pleasures like the flowers and the bees.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 25, 'On Beauty', 464, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 25, 'On Beauty', 404, '
     <h2>On Beauty</h2>
 <p>
 <a id="link83"></a>And a poet said, Speak to us of
@@ -6360,7 +6344,7 @@ is eternity gazing at itself in a mirror.
 <p>
 But you are eternity and you are the mirror.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 26, 'On Religion', 384, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 26, 'On Religion', 334, '
     <h2>On Religion</h2>
 <p>
 <a id="link87"></a>And an old priest said, Speak to us of
@@ -6438,7 +6422,7 @@ arms in the lightning and descending in rain.
 You shall see Him smiling in flowers, then rising and waving His hands in
 trees.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 27, 'On Death', 302, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 27, 'On Death', 264, '
     <h2>On Death</h2>
 <p>
 <a id="link90"></a>Then Almitra spoke, saying, We would ask now
@@ -6498,7 +6482,7 @@ And when you have reached the mountain top, then you shall begin to climb.
 <p>
 And when the earth shall claim your limbs, then shall you truly dance.
 </p>
-');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 28, 'The Farewell', 2540, '
+');INSERT INTO chapters (book_id, chapter_number, chapter_title, word_count, chapter_body) VALUES (2, 28, 'The Farewell', 2184, '
     <h2>The Farewell</h2>
 <p>
 <a id="link92"></a>And now it was evening.
@@ -6601,8 +6585,6 @@ And when they reached my depth the streams and the rivers ceased not yet to
 sing.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0119.jpg" id="id-3620013917618356484">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0119.jpg" width="460" id="id-1967294378082572795"></a>
 </div>
 <p>
 But sweeter still than laughter and greater than longing came to me.
@@ -6724,8 +6706,6 @@ Surely there is no greater gift to a man than that which turns all his aims
 into parching lips and all life into a fountain.
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0125.jpg" id="id-1756132096095278827">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0125.jpg" width="462" id="id-5074004959594772678"></a>
 </div>
 <p>
 <a id="link99"></a>And in this lies my honour and my
@@ -7007,7 +6987,5 @@ remembering in her heart his saying,
 bear me.”
 </p>
 <div class="fig" style="width:100%;">
-<a href="https://www.gutenberg.org/cache/epub/58585/images/0134.jpg" id="id-8871506975813041032">
-<img alt="Illustration:" height="600" src="The%20ProphetKahlilGibran_files/0134.jpg" width="462" id="id-4569192502016506498"></a>
 </div>
 ');
